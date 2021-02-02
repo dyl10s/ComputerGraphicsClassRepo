@@ -26,7 +26,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           project_id: "cis367"
-          service_account_key: ${{ sectets.GCP_KEY }}
+          service_account_key: ${{ secrets.GCP_KEY }}
           
       - name: Run Deploy Script
         run: |
