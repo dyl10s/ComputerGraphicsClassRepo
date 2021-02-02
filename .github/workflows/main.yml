@@ -30,7 +30,4 @@ jobs:
           
       - name: Run Deploy Script
         run: |
-          gcloud --quiet beta compute ssh --zone "us-east1-b" "top-tier-web-server-plz-no-charge-google" --project "cis367"
-          cd ../../var/www/html
-          sudo git pull
-          exit
+          gcloud --quiet compute ssh --zone "us-east1-b" "top-tier-web-server-plz-no-charge-google" --project "cis367" --command 'sudo cd ../../var/www/html && sudo git pull'
