@@ -23,7 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Set up gcloud Cloud SDK environment
-      - uses: google-github-actions/setup-gcloud@v0.2.0
+        uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           project_id: "cis367"
           service_account_key: ${{ sectets.GCP_KEY }}
