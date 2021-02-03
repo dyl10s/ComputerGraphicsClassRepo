@@ -1,0 +1,50 @@
+html, body {
+    min-height: 100%;
+    background-color: lightblue;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -10;
+}
+
+h1 {
+    text-align: center;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 100px;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+
+.card {
+    background-color: blue;
+    display: flex;
+    opacity: 0;
+    width: 100%;
+    height: 0%;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+    border-radius: 10px;
+    transition: .5s;
+}
+
+.card label {
+    pointer-events: none;
+}
+
+.card:hover {
+    background-color: darkblue;
+    font-size: 50px;
+}
