@@ -20,7 +20,7 @@ window.onload = () => {
         }
         titleElement.innerHTML += typeArray[lastTyped];
         lastTyped++;
-    }, 100);
+    }, 70);
 }
 
 
