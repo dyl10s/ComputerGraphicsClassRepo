@@ -33,9 +33,7 @@ window.onload = function init()
 
     var u = add( vertices[0], vertices[1] );
     var v = add( vertices[0], vertices[2] );
-    console.log(u, v, add( u, v ));
     var p = scale( .5, add( u, v ) );
-    console.log(p);
 
     // And, add our initial point into our array of points
 
