@@ -6,7 +6,6 @@ var baseColors = [
   vec3(0.0, 0.0, 1.0),
 ];
 var colors = [baseColors[0], baseColors[1], baseColors[2]];
-var time;
 
 window.onload = function init() {
   // Setup our canvas and WebGL
@@ -47,17 +46,13 @@ window.onload = function init() {
   var vColor = gl.getAttribLocation(program, "vColor");
   gl.vertexAttribPointer(vColor, 3, gl.FLOAT, false, 0, 0);
   gl.enableVertexAttribArray(vColor);
-  time = gl.getUniformLocation(program, "time");
 
-  requestAnimationFrame(render);
+  render(vertices.length);
+
 };
 
-function render() {
-  console.log(new Date().getTime() % 1000 / 1000);
-  gl.uniform1f(time, new Date().getTime() % 1000 / 1000);
 
+function render(vertexCount) {
   gl.clear(gl.COLOR_BUFFER_BIT);
-  gl.drawArrays(gl.TRIANGLES, 0, 3);
-
-  requestAnimationFrame(render);
+  gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
 }
