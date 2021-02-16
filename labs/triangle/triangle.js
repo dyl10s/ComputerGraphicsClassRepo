@@ -53,11 +53,6 @@ window.onload = function init() {
 };
 
 function render() {
-  console.log(new Date().getTime() % 1000 / 1000);
-  gl.uniform1f(time, new Date().getTime() % 1000 / 1000);
-
   gl.clear(gl.COLOR_BUFFER_BIT);
   gl.drawArrays(gl.TRIANGLES, 0, 3);
-
-  requestAnimationFrame(render);
 }
