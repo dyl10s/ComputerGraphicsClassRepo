@@ -1,20 +1,18 @@
+// Global variables we'll need
 var gl;
-var points = [];
-var baseColors = [
-  vec3(0.0, 1.0, 0.0),
-  vec3(1.0, 0.0, 0.0),
-  vec3(0.0, 0.0, 1.0),
-];
-var colors = [baseColors[0], baseColors[1], baseColors[2]];
-var time;
+var points;
 
+// This function executes our WebGL code AFTER the window is loaded.
+// Meaning, that we wait for our canvas element to exist.
 window.onload = function init() {
-  // Setup our canvas and WebGL
+  // Grab the canvas object and initialize it
   var canvas = document.getElementById('gl-canvas');
   gl = WebGLUtils.setupWebGL(canvas);
+
+  // Error checking
   if (!gl) { alert('WebGL unavailable'); }
 
-  // Triangle vertices
+  // triangle vertices
   var vertices = [
     vec2(-1, -1),
     vec2(0, 1),
@@ -25,7 +23,7 @@ window.onload = function init() {
   gl.viewport(0, 0, canvas.width, canvas.height);
   gl.clearColor(1.0, 1.0, 1.0, 1.0);
 
-  // load and initialize shaders
+  // load shaders and initialize attribute buffers
   var program = initShaders(gl, 'vertex-shader', 'fragment-shader');
   gl.useProgram(program);
 
@@ -33,25 +31,15 @@ window.onload = function init() {
   var bufferID = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, bufferID);
   gl.bufferData(gl.ARRAY_BUFFER, flatten(vertices), gl.STATIC_DRAW);
- 
-  // set position and render
+
+  // set its position and render it
   var vPosition = gl.getAttribLocation(program, 'vPosition');
   gl.vertexAttribPointer(vPosition, 2, gl.FLOAT, false, 0, 0);
   gl.enableVertexAttribArray(vPosition);
-
-  // draw colors
-  var cBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, flatten(colors), gl.STATIC_DRAW);
-
-  var vColor = gl.getAttribLocation(program, "vColor");
-  gl.vertexAttribPointer(vColor, 3, gl.FLOAT, false, 0, 0);
-  gl.enableVertexAttribArray(vColor);
-  time = gl.getUniformLocation(program, "time");
-
-  requestAnimationFrame(render);
+  render();
 };
 
+// Render whatever is in our gl variable
 function render() {
   gl.clear(gl.COLOR_BUFFER_BIT);
   gl.drawArrays(gl.TRIANGLES, 0, 3);
