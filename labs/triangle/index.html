@@ -5,18 +5,18 @@
   <meta charset="utf-8">
   <!-- Define our shaders -->
   <script id="vertex-shader" type="x-shader/x-vertex">
-attribute vec4 vPosition;
-
-void main() {
-  gl_Position = vPosition;
-}
+    attribute vec4 vPosition;
+    uniform float x;
+    uniform float y;
+    void main() {  
+      gl_Position = vPosition;
+    }
 </script>
   <script id="fragment-shader" type="x-shader/x-fragment">
-precision mediump float;
-
-void main() {
-  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-}
+    precision mediump float;
+    void main() {  
+      gl_FragColor = vec4(0.0, 1.0, 0.0, 0.5);
+    }
 </script>
 
   <script src="../Common/webgl-utils.js"></script>
