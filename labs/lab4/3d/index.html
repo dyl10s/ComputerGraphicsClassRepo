@@ -3,11 +3,13 @@
         <style>
 			body { margin: 0; }
 		</style>
+        <script src="keyboard.js"></script>
     </head>
     <body>
         <script type="module" src="index.js"></script>
-        <H1 id="warningText" style="text-align: center;">Don't Click The Button</H1>
-        <button id="theButton" style="height: 100px; width: 300px; font-size: large; margin: 0 auto; display: block;">CLICK ME!! 👈</button>
-        <video id="video" playsinline webkit-playsinline loop width="320" height="240" style="display: none;" src="./models/video.mp4"></video>
+        <h1 id="loadingText" style="text-align: center;">Welcome! Please wait while I download some stuff.</h1>
+        <H1 id="warningText" style="text-align: center; display: none;">Okay, just one last thing.. I need you to click the button!</H1>
+        <button id="theButton" style="height: 100px; width: 300px; font-size: large; margin: 0 auto; display: block; display: none;">CLICK ME!!</button>
+        <video id="video" playsinline webkit-playsinline loop width="320" height="240" style="display: none;"></video>
     </body>
 </html>
